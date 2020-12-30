@@ -21,6 +21,6 @@ def calc_local(image_path):
     res = len(face_recognition.face_locations(image, number_of_times_to_upsample=4, model='hog'))
     end_time = int(round(time.time() * 1000))
     time_cost = end_time - start_time
-    print("face_locations cost time(/ms): ", time_cost)
+    # print("face_locations cost time(/ms): ", time_cost)
 
     return res, time_cost
