@@ -11,6 +11,9 @@ def compare_single_picture(image_path):
     res = calc_remote(image_path)
     print(res)
     for r in res:
+        print(r.get())
+        print(type(r.get()["result"]))
+        print(r.get()["result"])
         cost_2 = r.get()["result"][1]
     end_time = int(round(time.time() * 1000))
 
