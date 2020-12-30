@@ -10,6 +10,8 @@ def compare_single_picture(image_path):
     start_time = int(round(time.time() * 1000))
     res = calc_remote(image_path)
     print(res)
+    for r in res:
+        print(r.get())
     end_time = int(round(time.time() * 1000))
 
     total_time_2 = end_time - start_time

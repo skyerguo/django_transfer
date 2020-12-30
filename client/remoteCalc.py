@@ -24,8 +24,8 @@ def calc_remote(image_path):
     pool.close()
     pool.join()
 
-    for r in result:
-        print(r.get())
+    # for r in result:
+    #     print(r.get())
     return result
 
 
