@@ -53,4 +53,4 @@ if __name__ == '__main__':
     #     image_path = os.path.join(image_source, image_name)
     #     compare_single_picture(image_path)
     #     # break
-    comparte_multi_picture
+    comparte_multi_picture(image_source)
