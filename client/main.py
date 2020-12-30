@@ -24,7 +24,7 @@ def compare_single_picture(image_path):
     print("transfer_time: ", transfer_time_2)
 
 
-def comparte_multi_picture(image_source): 
+def compare_multi_picture(image_source): 
     start_time = int(round(time.time() * 1000))
     for image_name in os.listdir(image_source):
         image_path = os.path.join(image_source, image_name)
@@ -53,4 +53,4 @@ if __name__ == '__main__':
     #     image_path = os.path.join(image_source, image_name)
     #     compare_single_picture(image_path)
     #     # break
-    comparte_multi_picture(image_source)
+    compare_multi_picture(image_source)
