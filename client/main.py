@@ -7,20 +7,21 @@ import os
 
 def compare_single_picture(image_path):
     res, cost_1 = calc_local(image_path)
-    print(cost_1)
+    print("cost_1: ", cost_1)
     start_time = int(round(time.time() * 1000))
     res = calc_remote(image_path)
-    print(res)
+    # print(res)
     for r in res:
-        print(r.get())
+        # print(r.get())
         tmp = json.loads(r.get())
-        print(tmp["result"])
+        # print(tmp["result"])
         cost_2 = tmp["result"][1]
     end_time = int(round(time.time() * 1000))
 
     total_time_2 = end_time - start_time
     transfer_time_2 = total_time_2 - cost_2
-    print(transfer_time_2)
+    print("cost_2: ", cost_2)
+    print("transfer_time: ", transfer_time_2)
 
 
 if __name__ == '__main__':
@@ -28,5 +29,4 @@ if __name__ == '__main__':
     for image_name in os.listdir(image_source):
         image_path = os.path.join(image_source, image_name)
         compare_single_picture(image_path)
-        break
-        # print(image_path)
+        # break
