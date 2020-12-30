@@ -28,6 +28,7 @@ def compare_multi_picture(image_source):
     start_time = int(round(time.time() * 1000))
     for image_name in os.listdir(image_source):
         image_path = os.path.join(image_source, image_name)
+        continue
         calc_local(image_path)
     end_time = int(round(time.time() * 1000))
     total_time_1 = end_time - start_time
@@ -36,9 +37,10 @@ def compare_multi_picture(image_source):
     start_time = int(round(time.time() * 1000))
     res = calc_remote_multi(image_source)
     print(res)
-    # for r in res:
+    for r in res:
     #     # print(r.get())
-    #     tmp = json.loads(r.get())
+        tmp = json.loads(r.get())
+        print(tmp)
     #     # print(tmp["result"])
     #     cost_2 = tmp["result"][1]
     end_time = int(round(time.time() * 1000))
