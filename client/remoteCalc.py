@@ -12,7 +12,7 @@ def single_request(ind, image_path):
     res = requests.post(url, files=files)
     # return res.text, ind
     print(res.text)
-    return ind
+    return res.text
 
 
 
