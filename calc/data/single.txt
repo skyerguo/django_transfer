@@ -1,0 +1,15 @@
+cost_1:  12466
+cost_2:  1318
+transfer_time:  2740
+cost_1:  36391
+cost_2:  4946
+transfer_time:  213
+cost_1:  112732
+cost_2:  12831
+transfer_time:  245
+cost_1:  31858
+cost_2:  3802
+transfer_time:  146
+cost_1:  35113
+cost_2:  4281
+transfer_time:  169

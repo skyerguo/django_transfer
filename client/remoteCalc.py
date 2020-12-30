@@ -13,7 +13,6 @@ def single_request(ind, image_path):
     return res.text
 
 
-
 def calc_remote_single(image_path):
     MAX_PROCESS = 1
     pool = Pool(processes=MAX_PROCESS)
@@ -28,11 +27,14 @@ def calc_remote_single(image_path):
     return result
 
 def calc_remote_multi(image_source):
-    MAX_PROCESS = 1
+    MAX_PROCESS = 5
     pool = Pool(processes=MAX_PROCESS)
     result = []
-    for i in range(MAX_PROCESS):
-        result.append(pool.apply_async(single_request, args=(i, image_source)))
+    index = 0
+    for image_name in os.listdir(image_source):
+        image_path = os.path.join(image_source, image_name)
+        result.append(pool.apply_async(single_request, args=(index, image_path)))
+        index += 1
     pool.close()
     pool.join()
 
