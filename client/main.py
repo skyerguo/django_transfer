@@ -21,5 +21,6 @@ if __name__ == '__main__':
     image_source = "./image"
     for image_name in os.listdir(image_source):
         image_path = os.path.join(image_source, image_name)
-        compare_single_picture()
+        compare_single_picture(image_path)
+        break
         # print(image_path)
