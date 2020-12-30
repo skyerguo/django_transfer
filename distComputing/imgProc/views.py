@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from .facialRecog import facial_recognition
+from .facialRecog import facial_recog
 
 import time
 import json
@@ -18,7 +18,7 @@ def facialRecog(request):
                 image = convert(image)
                 if image is None:
                     return HttpResponse('[error] POST data should be image file.')
-                result = facial_recognition(image)
+                result = facial_recog(image)
                 return JsonResponse({'result': result})
             else:
                 return HttpResponse('[error] Empty image file.')
