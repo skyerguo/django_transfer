@@ -11,7 +11,7 @@ def single_request(ind, image_path):
     files = {'img': open(image_path, 'rb')}
     res = requests.post(url, files=files)
     # return res.text, ind
-    print(res.text)
+    # print(res.text)
     return res.text
 
 
