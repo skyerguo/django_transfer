@@ -36,17 +36,19 @@ def compare_multi_picture(image_source):
     
     start_time = int(round(time.time() * 1000))
     res = calc_remote_multi(image_source)
-    print(res)
+    # print(res)
+    cost_2 = 0
     for r in res:
-    #     # print(r.get())
+        print(r.get())
         tmp = json.loads(r.get())
         print(tmp)
     #     # print(tmp["result"])
-    #     cost_2 = tmp["result"][1]
+        cost_2 += int(tmp["result"][1])
     end_time = int(round(time.time() * 1000))
     total_time_2 = end_time - start_time
     print("total_time_2: ", total_time_2)
-    # transfer_time_2 = total_time_2 - cost_2
+    transfer_time_2 = total_time_2 - cost_2
+    print("transfer_time: ", transfer_time_2)
 
 
 if __name__ == '__main__':
