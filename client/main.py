@@ -10,7 +10,10 @@ if __name__ == '__main__':
     print(cost_1)
     start_time = int(round(time.time() * 1000))
     res, cost_2 = calc_remote(image_path)
+    print(res)
+    print(cost_2)
     end_time = int(round(time.time() * 1000))
 
     total_time_2 = end_time - start_time
     transfer_time_2 = total_time_2 - cost_2
+    print(transfer_time_2)

@@ -26,7 +26,7 @@ def single_request(ind, image_path):
 def calc_remote(image_path):
     pools = []
     for i in range(MAX_PROCESS):
-        p = Process(target=single_request, args=(i,))
+        p = Process(target=single_request, args=(i, image_path))
         p.start()
 
     for process in pools:
