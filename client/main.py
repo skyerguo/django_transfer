@@ -2,6 +2,7 @@ from facialRecog import calc_local
 from remoteCalc import calc_remote
 import time 
 import resource
+import json
 import os
 
 def compare_single_picture(image_path):
@@ -12,9 +13,9 @@ def compare_single_picture(image_path):
     print(res)
     for r in res:
         print(r.get())
-        print(type(r.get()["result"]))
-        print(r.get()["result"])
-        cost_2 = r.get()["result"][1]
+        tmp = json.loads(r.get())
+        print(tmp["result"])
+        cost_2 = tmp["result"][1]
     end_time = int(round(time.time() * 1000))
 
     total_time_2 = end_time - start_time
