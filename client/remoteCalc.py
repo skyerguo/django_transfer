@@ -38,7 +38,7 @@ def calc_remote_multi(image_source):
     pool.close()
     pool.join()
     
-    for r in result:
-        print(r.get())
+    # for r in result:
+    #     print(r.get())
     return result
 
