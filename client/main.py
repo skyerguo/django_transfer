@@ -13,7 +13,7 @@ def compare_single_picture(image_path):
     # print(res)
     for r in res:
         # print(r.get())
-        tmp = json.loads(r.get())
+        tmp = json.loads(r.get()[-1])
         # print(tmp["result"])
         cost_2 = tmp["result"][1]
     end_time = int(round(time.time() * 1000))
