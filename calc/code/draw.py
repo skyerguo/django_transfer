@@ -109,18 +109,21 @@ def his_3():
 
     index = np.arange(3)
     width = 0.4
-    print(index)
+    # print(index)
     sum = 0
     for i in range(5):
-        plt.bar(index[0], y1[i], width=width, label='本地运算', bottom=sum)
+        plt.bar(index[0], y1[i], width=width, label='本地单次运算', bottom=sum)
         sum += y1[i]
 
     sum = 0
     for i in range(5):
-        plt.bar(index[1], y2[i], width=width, label='远程运算', bottom=sum)
+        plt.bar(index[1], y2[i], width=width, label='远程单次运算', bottom=sum)
         sum += y2[i]
+
+    plt.bar(index[2], y3, width, label='远程并行运算')
     
     plt.show()
+    plt.close()
 
 
 if __name__ == "__main__":
