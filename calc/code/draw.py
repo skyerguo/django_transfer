@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import os
 import numpy as np
+import json
 
 plt.rcParams["font.family"] = 'Arial Unicode MS' #显示中文标签
-plt.rcParams['axes.unicode_minus']=False   #这两行需要手动设置
+plt.rcParams['axes.unicode_minus'] = False   #这两行需要手动设置
 
 data_source = '../data/'
 def his_1():
@@ -94,14 +95,32 @@ def his_3():
     y2 = []
     y3 = []
     for line in f:
-        if 'total_time_1' in line:
-            y1.append(int(line.split(':')[1]))
+        if 'result_local' in line:
+            y1.append(int(line.split(':')[1].split(' ')[-1]))
+        if '[' in line:
+            tmp = line.split('{')[1].split('}')[0]
+            # print(tmp)
+            tmp = json.loads('{' + tmp + '}')
+            y2.append(int(tmp["result"][1]))
         if 'total_time_2' in line:
-            y2.append(int(line.split(':')[1]))
-        if 'transfer_time' in line:
             y3.append(int(line.split(':')[1]))
             # print('1111', line)
-    f.close()    
+    f.close()   
+
+    index = np.arange(3)
+    width = 0.4
+    print(index)
+    sum = 0
+    for i in range(5):
+        plt.bar(index[0], y1[i], width=width, label='本地运算', bottom=sum)
+        sum += y1[i]
+
+    sum = 0
+    for i in range(5):
+        plt.bar(index[1], y2[i], width=width, label='远程运算', bottom=sum)
+        sum += y2[i]
+    
+    plt.show()
 
 
 if __name__ == "__main__":
