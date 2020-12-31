@@ -38,7 +38,7 @@ def compare_multi_picture(image_source):
     cost_2 = 0
     for r in res:
         # print(r.get())
-        tmp = json.loads(r.get())
+        tmp = json.loads(r.get()[-1])
         print(tmp)
         cost_2 += int(tmp["result"][1])
     end_time = int(round(time.time() * 1000))
