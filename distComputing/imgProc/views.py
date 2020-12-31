@@ -32,8 +32,8 @@ def convert(image_file):
     Convert image file from type <class 'django.core.files.uploadedfile.InMemoryUploadedFile'> 
     to <class ???>
     """
-    
-    file_name = os.path.join(BASE_DIR, 'img', 'img_'+str(int(time.time()))+'.'+image_file.name.split('.')[-1])
+    file_name = os.path.join(BASE_DIR, 'img', 'img_'+str(int(time.time() * 1000000))+'.'+image_file.name.split('.')[-1])
+    # file_name = os.path.join(BASE_DIR, 'img', 'img_'+str(int(time.time()))+'.'+image_file.name.split('.')[-1])
     if image_file.name.split('.')[-1] not in ['jpeg','jpg','png']:
         return None
     with open(file_name, 'wb+') as fp:
