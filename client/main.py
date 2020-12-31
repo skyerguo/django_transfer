@@ -28,7 +28,8 @@ def compare_multi_picture(image_source):
     start_time = int(round(time.time() * 1000))
     for image_name in os.listdir(image_source):
         image_path = os.path.join(image_source, image_name)
-        calc_local(image_path)
+        res1, cost_1 = calc_local(image_path)
+        print("result_local: ", res1, cost_1)
     end_time = int(round(time.time() * 1000))
     total_time_1 = end_time - start_time
     print("total_time_1: ", total_time_1)
@@ -50,9 +51,9 @@ def compare_multi_picture(image_source):
 
 if __name__ == '__main__':
     image_source = "./image"
-    for image_name in os.listdir(image_source):
-        image_path = os.path.join(image_source, image_name)
-        compare_single_picture(image_path)
+    # for image_name in os.listdir(image_source):
+    #     image_path = os.path.join(image_source, image_name)
+    #     compare_single_picture(image_path)
     print('---end---')
     time.sleep(5)
     compare_multi_picture(image_source)
