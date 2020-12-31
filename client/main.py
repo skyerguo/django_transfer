@@ -50,9 +50,9 @@ def compare_multi_picture(image_source):
 
 if __name__ == '__main__':
     image_source = "./image"
-    # for image_name in os.listdir(image_source):
-    #     image_path = os.path.join(image_source, image_name)
-    #     compare_single_picture(image_path)
+    for image_name in os.listdir(image_source):
+        image_path = os.path.join(image_source, image_name)
+        compare_single_picture(image_path)
     print('---end---')
     time.sleep(5)
     compare_multi_picture(image_source)
