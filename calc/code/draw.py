@@ -86,6 +86,25 @@ def his_2():
     plt.close()
     # print(p)
 
+
+def his_3():
+    data_path = os.path.join(data_source, 'multi.txt')
+    f = open(data_path, 'r')
+    y1 = []
+    y2 = []
+    y3 = []
+    for line in f:
+        if 'total_time_1' in line:
+            y1.append(int(line.split(':')[1]))
+        if 'total_time_2' in line:
+            y2.append(int(line.split(':')[1]))
+        if 'transfer_time' in line:
+            y3.append(int(line.split(':')[1]))
+            # print('1111', line)
+    f.close()    
+
+
 if __name__ == "__main__":
-    his_1()
-    his_2()
+    # his_1()
+    # his_2()
+    his_3()
