@@ -1,8 +1,12 @@
-total_time_1:  223653
-[0, './image/1.jpg', '{"result": [0, 72451]}']
-[1, './image/5.jpg', '{"result": [23, 17632]}']
-[2, './image/3.jpg', '{"result": [9, 67031]}']
-[3, './image/2.jpg', '{"result": [5, 15884]}']
-[4, './image/4.jpg', '{"result": [6, 18080]}']
-total_time_2:  108542
-transfer_time:  -82536
+result_local:  0 10998
+result_local:  23 35708
+result_local:  9 105546
+result_local:  5 31735
+result_local:  6 34089
+total_time_1:  222732
+[0, './image/1.jpg', '{"result": [0, 5385]}']
+[1, './image/5.jpg', '{"result": [23, 17721]}']
+[2, './image/3.jpg', '{"result": [9, 51236]}']
+[3, './image/2.jpg', '{"result": [5, 15829]}']
+[4, './image/4.jpg', '{"result": [6, 18212]}']
+total_time_2:  109270
