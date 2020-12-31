@@ -1,13 +1,13 @@
-total_time_1:  109417
-{"result": [3, 3952]}
-{'result': [3, 3952]}
-{"result": [3, 3815]}
-{'result': [3, 3815]}
-{"result": [3, 3908]}
-{'result': [3, 3908]}
-{"result": [3, 3851]}
-{'result': [3, 3851]}
-{"result": [3, 3841]}
-{'result': [3, 3841]}
-total_time_2:  22199
-transfer_time:  2832
+total_time_1:  213955
+{"result": [6, 17077]}
+{'result': [6, 17077]}
+{"result": [6, 17254]}
+{'result': [6, 17254]}
+{"result": [6, 17467]}
+{'result': [6, 17467]}
+{"result": [6, 17657]}
+{'result': [6, 17657]}
+{"result": [6, 34401]}
+{'result': [6, 34401]}
+total_time_2:  86934
+transfer_time:  -16922

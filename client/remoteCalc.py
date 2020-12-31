@@ -10,7 +10,7 @@ def single_request(ind, image_path):
     res = requests.post(url, files=files)
     # return res.text, ind
     # print(res.text)
-    return res.text
+    return [ind, res.text]
 
 
 def calc_remote_single(image_path):
