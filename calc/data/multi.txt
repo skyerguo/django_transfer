@@ -1,13 +1,8 @@
-total_time_1:  213955
-{"result": [6, 17077]}
-{'result': [6, 17077]}
-{"result": [6, 17254]}
-{'result': [6, 17254]}
-{"result": [6, 17467]}
-{'result': [6, 17467]}
-{"result": [6, 17657]}
-{'result': [6, 17657]}
-{"result": [6, 34401]}
-{'result': [6, 34401]}
-total_time_2:  86934
-transfer_time:  -16922
+total_time_1:  223653
+[0, './image/1.jpg', '{"result": [0, 72451]}']
+[1, './image/5.jpg', '{"result": [23, 17632]}']
+[2, './image/3.jpg', '{"result": [9, 67031]}']
+[3, './image/2.jpg', '{"result": [5, 15884]}']
+[4, './image/4.jpg', '{"result": [6, 18080]}']
+total_time_2:  108542
+transfer_time:  -82536
