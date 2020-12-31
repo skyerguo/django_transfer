@@ -112,17 +112,25 @@ def his_3():
     # print(index)
     sum = 0
     for i in range(5):
-        plt.bar(index[0], y1[i], width=width, label='本地单次运算', bottom=sum)
+        plt.bar(index[0], y1[i], width=width, label='本地单次运算_' + str(i), bottom=sum)
         sum += y1[i]
 
     sum = 0
     for i in range(5):
-        plt.bar(index[1], y2[i], width=width, label='远程单次运算', bottom=sum)
+        plt.bar(index[1], y2[i], width=width, label='远程单次运算_' + str(i), bottom=sum)
         sum += y2[i]
 
-    plt.bar(index[2], y3, width, label='远程并行运算')
+    plt.bar(index[2], y3, width=width, label='远程并行运算')
     
-    plt.show()
+    x_item = ['本地单次运算', '远程单次运算', '远程并行计算']
+    plt.xticks(index, x_item)
+    
+    # plt.legend(loc="upper right", fontsize='x-small')  # 防止label和图像重合显示不出来
+    plt.ylabel('运算时间/ms')
+    # plt.xlabel('图片编号')
+    plt.rcParams['figure.figsize'] = (16.0, 9.0)  # 尺寸
+    plt.savefig('../figures/f3.pdf')
+    # plt.show()
     plt.close()
 
 
