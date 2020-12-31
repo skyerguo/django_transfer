@@ -135,6 +135,6 @@ def his_3():
 
 
 if __name__ == "__main__":
-    # his_1()
-    # his_2()
+    his_1()
+    his_2()
     his_3()
