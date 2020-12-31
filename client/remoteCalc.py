@@ -37,8 +37,8 @@ def calc_remote_multi(image_source):
         index += 1
     pool.close()
     pool.join()
-
-    # for r in result:
-    #     print(r.get())
+    
+    for r in result:
+        print(r.get())
     return result
 
