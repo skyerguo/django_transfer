@@ -92,9 +92,9 @@ def his_2():
 
 
 def his_3():
-    def add_text(x, y, data, fontsize=8):
+    def add_text(x, y, data, fontsize=10):
         for y0, data0 in zip(y, data):
-            plt.text(x, y0, round(data0, 1))
+            plt.text(x, y0, round(data0, 1), fontsize=fontsize)
 
     data_path = os.path.join(data_source, 'multi.txt')
     f = open(data_path, 'r')
@@ -116,13 +116,20 @@ def his_3():
 
     index = np.arange(3)
     width = 0.6
+    # print(y1)
+    # tmp_data = np.array(y1)
+    category_names = ["图片" + str(x) for x in range(1, 6)]
+    category_colors = plt.get_cmap('RdYlGn')(np.linspace(0.15, 0.85, 5))
+    # print(category_colors)
+
     plt.rcParams['savefig.dpi'] = 300 #图片像素
     plt.rcParams['figure.dpi'] = 300 #分辨率
     # print(index)
     sum = 0
     accumulate = []
     for i in range(5):
-        plt.bar(index[0], y1[i], width=width, label='本地单次运算_' + str(i), bottom=sum)
+        # print(category_colors[i])
+        plt.bar(index[0], y1[i], width=width, label=category_names[i], bottom=sum, color=category_colors[i])
         sum += y1[i]
         accumulate.append(sum - y1[i] / 2 - 3000)
     add_text(index[0], accumulate, np.arange(1, 6))
@@ -130,7 +137,7 @@ def his_3():
     sum = 0
     accumulate = []
     for i in range(5):
-        plt.bar(index[1], y2[i], width=width, label='迁移单次运算_' + str(i), bottom=sum)
+        plt.bar(index[1], y2[i], width=width, bottom=sum, color=category_colors[i])
         sum += y2[i]
         accumulate.append(sum - y2[i] / 2 - 3000)
     add_text(index[1], accumulate, np.arange(1, 6))
@@ -141,6 +148,7 @@ def his_3():
     plt.xticks(index, x_item)
     
     plt.ylabel('运算时长/ms')
+    plt.legend()
     # plt.xlabel('图片编号')
     plt.savefig('../figures/f3.pdf')
     # plt.show()
