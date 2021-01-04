@@ -24,3 +24,7 @@ def calc_local(image_path):
     # print("face_locations cost time(/ms): ", time_cost)
 
     return res, time_cost
+
+if __name__ == '__main__':
+    print(calc_local('./image/4.jpg'))
+    

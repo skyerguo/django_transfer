@@ -32,16 +32,20 @@ def his_1():
     print(y1)
     print(y2)
     # print(y3)
+    plt.rcParams['savefig.dpi'] = 300 #图片像素
+    plt.rcParams['figure.dpi'] = 300 #分辨率
+    # plt.rcParams['figure.figsize'] = (16.0, 9.0)  # 尺寸
+
     plt.bar(x, y1, width=width, label='本地运算', color='red')
-    plt.bar(x + width, y2, width=width, label='远程运算', color='deepskyblue')
+    plt.bar(x + width, y2, width=width, label='迁移运算', color='deepskyblue')
     # plt.bar(x + 2 * width, y3, width=width, label='useast4c', color='green')
     plt.xticks()
     plt.legend(loc="upper left")  # 防止label和图像重合显示不出来
-    plt.ylabel('运算时长/ms')
+    plt.ylabel('总时长/ms')
     plt.xlabel('图片编号')
     # plt.rcParams['savefig.dpi'] = 300  # 图片像素
     # plt.rcParams['figure.dpi'] = 300  # 分辨率
-    plt.rcParams['figure.figsize'] = (16.0, 9.0)  # 尺寸
+
     # plt.title("measurement-latency")
     plt.savefig('../figures/f1.pdf')
     plt.close()
@@ -70,17 +74,16 @@ def his_2():
     
     index = np.arange(len(y2))
     width = 0.4
-    plt.bar(index, p1, width=width, label='传输时间', color='red')
-    plt.bar(index, p2, width=width, bottom=p1, label='传输时间')
+    plt.rcParams['savefig.dpi'] = 300 #图片像素
+    plt.rcParams['figure.dpi'] = 300 #分辨率
+    plt.bar(index, p1, width=width, label='传输时长占比', color='red')
+    plt.bar(index, p2, width=width, bottom=p1, label='运算时长占比')
     plt.ylim(0, 100)
-    plt.xticks(index)
-    # plt.xticklabels([x for x in range(1, len(y2) + 1)])
+    plt.xticks()
     plt.legend(loc="upper left")  # 防止label和图像重合显示不出来
     plt.ylabel('百分比/%')
     plt.xlabel('图片编号')
-    # plt.rcParams['savefig.dpi'] = 300  # 图片像素
-    # plt.rcParams['figure.dpi'] = 300  # 分辨率
-    plt.rcParams['figure.figsize'] = (16.0, 9.0)  # 尺寸
+    # plt.rcParams['figure.figsize'] = (16.0, 9.0)  # 尺寸
     # plt.title("measurement-latency")
     plt.savefig('../figures/f2.pdf')
     # plt.show()
@@ -89,6 +92,10 @@ def his_2():
 
 
 def his_3():
+    def add_text(x, y, data, fontsize=8):
+        for y0, data0 in zip(y, data):
+            plt.text(x, y0, round(data0, 1))
+
     data_path = os.path.join(data_source, 'multi.txt')
     f = open(data_path, 'r')
     y1 = []
@@ -108,33 +115,40 @@ def his_3():
     f.close()   
 
     index = np.arange(3)
-    width = 0.4
+    width = 0.6
+    plt.rcParams['savefig.dpi'] = 300 #图片像素
+    plt.rcParams['figure.dpi'] = 300 #分辨率
     # print(index)
     sum = 0
+    accumulate = []
     for i in range(5):
         plt.bar(index[0], y1[i], width=width, label='本地单次运算_' + str(i), bottom=sum)
         sum += y1[i]
-
-    sum = 0
-    for i in range(5):
-        plt.bar(index[1], y2[i], width=width, label='远程单次运算_' + str(i), bottom=sum)
-        sum += y2[i]
-
-    plt.bar(index[2], y3, width=width, label='远程并行运算')
+        accumulate.append(sum - y1[i] / 2 - 3000)
+    add_text(index[0], accumulate, np.arange(1, 6))
     
-    x_item = ['本地单次运算', '远程单次运算', '远程并行计算']
+    sum = 0
+    accumulate = []
+    for i in range(5):
+        plt.bar(index[1], y2[i], width=width, label='迁移单次运算_' + str(i), bottom=sum)
+        sum += y2[i]
+        accumulate.append(sum - y2[i] / 2 - 3000)
+    add_text(index[1], accumulate, np.arange(1, 6))
+
+    plt.bar(index[2], y3, width=width, label='迁移并行运算')
+    
+    x_item = ['本地单次运算', '迁移单次运算', '迁移并行运算']
     plt.xticks(index, x_item)
     
-    # plt.legend(loc="upper right", fontsize='x-small')  # 防止label和图像重合显示不出来
-    plt.ylabel('运算时间/ms')
+    plt.ylabel('运算时长/ms')
     # plt.xlabel('图片编号')
-    plt.rcParams['figure.figsize'] = (16.0, 9.0)  # 尺寸
     plt.savefig('../figures/f3.pdf')
     # plt.show()
     plt.close()
 
 
 if __name__ == "__main__":
-    his_1()
-    his_2()
+    # his_1()
+    # his_2()
     his_3()
+    # 编号、大小、人数、运行时间
