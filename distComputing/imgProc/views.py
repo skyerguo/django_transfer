@@ -6,6 +6,9 @@ from .facialRecog import facial_recog
 import time
 import json
 import os
+import sys
+sys.path.append('home/myzhou/lsc-cnn-master')
+from crowd_count import crowd_count
 from PIL import Image
 
 from distComputing.settings import BASE_DIR
@@ -18,7 +21,7 @@ def facialRecog(request):
                 image = convert(image)
                 if image is None:
                     return HttpResponse('[error] POST data should be image file.')
-                result = facial_recog(image)
+                result = crowd_count(image)
                 return JsonResponse({'result': result})
             else:
                 return HttpResponse('[error] Empty image file.')
