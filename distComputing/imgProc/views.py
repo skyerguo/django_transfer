@@ -35,7 +35,6 @@ def crowdCnt(request):
                 image = convert(image)
                 if image is None:
                     return HttpResponse('[error] POST data should be image file.')
-                print(image)
                 result = crowd_cnt(image)
                 return JsonResponse({'result': result})
             else:
