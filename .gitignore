@@ -1,3 +1,5 @@
 *.pdf
+*.pyc
 cernet-doc.md
 report/
+distComputing/img/

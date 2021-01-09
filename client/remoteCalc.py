@@ -4,14 +4,22 @@ import requests
 import os
 
 def single_request(ind, image_path):
-    url = 'http://[2001:da8:270:2020:f816:3eff:fe7d:f719]:8000/imgProc/facialRecog/'
-    # url = 'http://127.0.0.1:8000/imgProc/facialRecog/'
+    url = 'http://127.0.0.1:8000/imgProc/facialRecog/'
     files = {'img': open(image_path, 'rb')}
     res = requests.post(url, files=files)
     # return res.text, ind
     # print(res.text)
     return [ind, image_path, res.text]
 
+
+def crowd_count_request(image_path):
+    # url = 'http://10.177.53.226:8000/imgProc/crowdCnt/'
+    url = 'http://127.0.0.1:8000/imgProc/crowdCnt/'
+    files = {'img': open(image_path, 'rb')}
+    res = requests.post(url, files=files)
+    # return res.text, ind
+    print(res.text)
+    return [image_path, res.text]
 
 def calc_remote_single(image_path):
     MAX_PROCESS = 1
@@ -42,3 +50,5 @@ def calc_remote_multi(image_source):
     #     print(r.get())
     return result
 
+if __name__ == "__main__":
+    print(crowd_count_request('./image/4.jpg'))

@@ -6,11 +6,8 @@ from .facialRecog import facial_recog
 import time
 import json
 import os
-import sys
-sys.path.append('home/myzhou/lsc-cnn-master')
-from crowd_count import crowd_count
+from .crowdCnt import crowd_cnt
 from PIL import Image
-
 from distComputing.settings import BASE_DIR
 
 def facialRecog(request):
@@ -21,7 +18,25 @@ def facialRecog(request):
                 image = convert(image)
                 if image is None:
                     return HttpResponse('[error] POST data should be image file.')
-                result = crowd_count(image)
+                result = facial_recog(image)
+                return JsonResponse({'result': result})
+            else:
+                return HttpResponse('[error] Empty image file.')
+        except Exception as err:
+            return HttpResponse('[error] POST data is incompatible.')
+    else:
+        return HttpResponse('[error] Request method should be POST.')
+
+def crowdCnt(request):
+    if request.method == 'POST':
+        try:
+            image = request.FILES.get('img', None)
+            if image:
+                image = convert(image)
+                if image is None:
+                    return HttpResponse('[error] POST data should be image file.')
+                print(image)
+                result = crowd_cnt(image)
                 return JsonResponse({'result': result})
             else:
                 return HttpResponse('[error] Empty image file.')
