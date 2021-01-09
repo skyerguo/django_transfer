@@ -132,7 +132,7 @@ def his_3():
         plt.bar(index[0], y1[i], width=width, label=category_names[i], bottom=sum, color=category_colors[i])
         sum += y1[i]
         accumulate.append(sum - y1[i] / 2 - 3000)
-    add_text(index[0], accumulate, np.arange(1, 6))
+    # add_text(index[0], accumulate, np.arange(1, 6))
     
     sum = 0
     accumulate = []
@@ -140,7 +140,7 @@ def his_3():
         plt.bar(index[1], y2[i], width=width, bottom=sum, color=category_colors[i])
         sum += y2[i]
         accumulate.append(sum - y2[i] / 2 - 3000)
-    add_text(index[1], accumulate, np.arange(1, 6))
+    # add_text(index[1], accumulate, np.arange(1, 6))
 
     plt.bar(index[2], y3, width=width, label='迁移并行运算')
     
