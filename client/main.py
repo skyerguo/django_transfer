@@ -42,7 +42,7 @@ def compare_multi_picture(image_source):
     res = calc_remote_multi(image_source)
     cost_2 = 0
     for r in res:
-        print(r.get())
+        # print(r.get())
         tmp = json.loads(r.get()[-1])
         # print(tmp)
         cost_2 += int(tmp["result"][1])
